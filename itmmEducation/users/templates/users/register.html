@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Регистрация</title>
+		<!-- Подключение шрифтов -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Подключение CSS -->
+		<link rel="stylesheet" href="{% static 'css/style-auth.css' %}" />
+	</head>
+	<body>
+		<div class="background-effects">
+			<img src="{% static 'img/bg-menu.png' %}" alt="Свечение" class="background-effect" />
+		</div>
+		<div class="div-container">
+			<form
+				class="register-form"
+				action="{% url 'register' %}"
+				method="post"
+				aria-labelledby="form-heading"
+			>
+                {% csrf_token %}
+				<!-- Заголовок -->
+				<div class="form-text">
+					<h1 id="form-heading">ITMM</h1>
+					<p>Регистрация</p>
+				</div>
+
+				<!-- Поля ввода -->
+				<div class="form-group">
+					<div class="input-container">
+						<input class="username-input" type="text" name="username" id="username" required />
+						<span class="placeholder-text">Логин</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-container">
+						<input
+							class="password-input"
+							type="password"
+							name="password1"
+							id="password1"
+							required
+						/>
+						<span class="placeholder-pass">Пароль</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-container">
+						<input
+							class="password-input"
+							type="password"
+							name="password2"
+							id="password2"
+							required
+						/>
+						<span class="placeholder-pass">Повторите пароль</span>
+					</div>
+				</div>
+
+				<!-- Кнопки -->
+				<div class="form-actions">
+					<button class="button register-button" type="submit">
+						Зарегистрироваться
+					</button>
+					<a class="login-link" href="{% url 'login' %}">Уже есть аккаунт?</a>
+				</div>
+			</form>
+		</div>
+		<script src="{% static 'js/index.js' %}"></script>
+	</body>
+</html>
